@@ -12,12 +12,16 @@
     </sql>
 
     <select id="findTopicList" resultMap="BaseResultMap">
-        SELECT * FROM topic
+        SELECT * FROM topic limit #{offset,jdbcType=INTEGER} ,#{pageSize,jdbcType=INTEGER}
     </select>
 
-    <select id="insertTopic" resultType="int">
+    <select id="insertTopic">
         INSERT INTO topic(name,content)
         VALUES (#{topic.name,jdbcType=VARCHAR},#{topic.content,jdbcType=LONGVARCHAR})
+    </select>
+
+    <select id="findAllValidCount" resultType="int">
+        SELECT COUNT(1) FROM topic
     </select>
 
 </mapper>

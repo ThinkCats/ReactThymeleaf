@@ -1,15 +1,71 @@
+
 var TopicList = React.createClass({displayName: "TopicList",
-    getInitialState:function(){
-        return {list:[]}
+    getDefaultProps:function(){
+        return {
+            page:1
+        }
     },
-    componentDidMount:function(){
+
+    getInitialState:function(){
+        var tt = this.loadPageCountFromServer();
+        console.log('ttt:',tt);
+        console.log('tt body:',tt.responseJSON);
+        return {
+            list:[],
+            pageNum:1,
+            pageCount:tt.responseJSON
+        }
+    },
+
+    loadPageCountFromServer:function(){
+        //获取总页数
+        return $.ajax({
+            url:'/topic/pageCount',
+            async:false,
+            dataType:'json',
+            success:function(result){
+                return this;
+            }
+        });
+    },
+
+    componentWillMount:function(){
+        console.log('----------- will mount --------');
+        this.loadPageCountFromServer();
+        console.log('----------- end mount ----------')
+    },
+
+    loadDataFromServer:function(){
+        //实时获取总页数
+        this.loadPageCountFromServer();
+        //获取话题信息
         $.ajax({
             url:'/topic/list',
+            type:'get',
+            data:{pageNum:this.state.pageNum},
             dataType:'json',
             success:function(data){
                 this.setState({list:data});
             }.bind(this)
         });
+    },
+
+    componentDidMount:function(){
+        console.log('did mount ,total:',this.state.pageCount);
+        $('#pagination').twbsPagination({
+            first:'首页',
+            prev:'上一页',
+            next:'下一页',
+            last:'尾页',
+            totalPages: this.state.pageCount,
+            visiblePages: 5,
+            onPageClick:function(event,page){
+                this.setState({pageNum:page});
+                this.loadDataFromServer();
+
+            }.bind(this)
+        });
+
     },
     render:function(){
         var topicItem = this.state.list.map(function(item){
@@ -30,7 +86,7 @@ var TopicList = React.createClass({displayName: "TopicList",
                             )
                         ), 
                     React.createElement("div", {className: "panel-footer"}, 
-                        React.createElement(Pagination, null)
+                        React.createElement(TwbsPagination, null)
                     )
                 )
             )
@@ -38,8 +94,46 @@ var TopicList = React.createClass({displayName: "TopicList",
     }
 });
 
-var Pagination = React.createClass({displayName: "Pagination",
+var TwbsPagination = React.createClass({displayName: "TwbsPagination",
+
     render:function(){
+       return (
+           React.createElement('div',{id:'pagination'},'')
+       )
+    }
+});
+
+
+var Pagination = React.createClass({displayName: "Pagination",
+    getDefaultProps:function(){
+        return {
+            page:1
+        }
+    },
+    getInitialState:function(){
+        return {
+            pageCount:1,
+            pageNum:this.props.page
+        }
+    },
+    componentDidMount:function(){
+        //获取总页数
+        $.ajax({
+            url:'/topic/pageCount',
+            dataType:'json',
+            success:function(result){
+                console.log('did mount,get pageCount:',result);
+                this.setState({pageCount:result})
+            }.bind(this)
+        });
+    },
+    handleClick:function(){
+
+    },
+    render:function(){
+        var liItem = function(){
+            //得到总页数,显示列表
+        };
         return (
             React.createElement("nav", null, 
                 React.createElement("ul", {className: "pagination pagination-offset"}, 
