@@ -1,0 +1,41 @@
+
+body{
+  background-color: #e1e1e1 !important;
+  font-family: "Helvetica Neue","Luxi Sans","DejaVu Sans",Tahoma,"Hiragino Sans GB",STHeiti!important;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.top-offset {
+  margin-top: 20px;
+}
+
+.top-form-offset {
+  padding: 0 5px 0 5px;
+}
+
+/* main page */
+.main {
+  width: 78%;
+  float: left;
+}
+
+.pagination-offset {
+  margin: 0 0;
+}
+
+.col-md-padding-offset {
+  padding-right: 0px;
+  padding-left: 8px;
+}
+
+/* side bar  */
+
+.side-bar {
+  font-size: 14px;
+  float: right;
+  margin-bottom: 20px;
+  width: 20%;
+}

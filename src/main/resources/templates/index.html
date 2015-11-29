@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>首页</title>
+    <div th:replace="/include/header :: commonCss"/>
+    <script type="text/javascript" src="/1.0/js/index.js"></script>
+</head>
+<body>
+<div th:replace="/include/header :: navbar"/>
+<div class="container content">
+    <p> </p>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-9 col-md-padding-offset">
+            <!-- content list -->
+            <div id="topic-list"></div>
+        </div>
+        <!-- side bar -->
+        <div class="col-md-3 col-md-padding-offset">
+            <div id="post-topic"></div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="include/header::commonJs"/>
+<script type="text/javascript" src="/1.0/js/index.js"></script>
+</body>
+</html>

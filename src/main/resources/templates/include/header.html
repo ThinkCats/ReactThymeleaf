@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="commonCss">
+    <link rel="stylesheet" type="text/css" href="/plugins/bootstrap/css/bootstrap.min.css"/>
+    <link rel='stylesheet' type="text/css" href='/1.0/css/style.css' />
+    <link rel="stylesheet" type="text/css" href="/1.0/css/navbar.css"/>
+</th:block>
+
+<th:block th:fragment="commonJs">
+    <script type="text/javascript" src="/plugins/reactjs/react.js"></script>
+    <script type="text/javascript" src="/plugins/reactjs/react-dom.js"></script>
+    <script src="/plugins/jquery/jquery.min.js"></script>
+    <script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+</th:block>
+
+<div th:fragment="navbar">
+    <div class="blog-masthead">
+        <div class="container">
+            <nav class="blog-nav">
+                <a class="blog-nav-item active" href="/">NodeReact</a>
+                <a class="blog-nav-item" href="#">用户</a>
+                <a class="blog-nav-item" href="#">讨论</a>
+                <a class="blog-nav-item-right text-right" href="#">登录</a>
+                <a class="blog-nav-item-right text-right" href="#">注册</a>
+            </nav>
+        </div>
+    </div>
+</div>
+
+</html>

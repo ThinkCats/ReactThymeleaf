@@ -1,0 +1,11 @@
+image: daocloud.io/library/java
+script:
+        - echo "Ci Begin"
+        - ls
+        - echo "Now Pwd"
+        - pwd
+        - echo "Look Workdir"
+        - cd /usr/src
+        - ls
+        - echo "maven env"
+        - echo $MAVEN_HOME
