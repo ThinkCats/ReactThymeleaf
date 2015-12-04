@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <title>发布话题</title>
     <div th:replace="/include/header :: commonCss"/>
+    <link rel="stylesheet" type="text/css" href="/plugins/wyshtml5/bootstrap3-wysihtml5.min.css" />
 </head>
 <body>
     <div th:replace="/include/header::navbar"/>
@@ -21,6 +22,8 @@
 
     </div>
     <div th:replace="/include/header::commonJs"/>
+    <script type="text/javascript" src="/plugins/wyshtml5/bootstrap3-wysihtml5.all.min.js"></script>
+    <script type="text/javascript" src="/plugins/wyshtml5/locales/bootstrap-wysihtml5.zh-CN.js"></script>
     <script type="text/javascript" src="/1.0/js/topic.js"></script>
 </body>
 </html>

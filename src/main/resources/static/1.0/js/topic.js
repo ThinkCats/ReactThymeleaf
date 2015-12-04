@@ -15,6 +15,9 @@ var Topic = React.createClass({displayName: "Topic",
 });
 
 var TopicForm = React.createClass({displayName: "TopicForm",
+    componentDidMount:function(){
+        $('#editor').wysihtml5({locale:'zh-CN'});
+    },
     render:function(){
         return (
             React.createElement("div", null, 
@@ -23,7 +26,7 @@ var TopicForm = React.createClass({displayName: "TopicForm",
                         React.createElement("input", {type: "text", className: "form-control", name: "name", placeholder: "话题名称"})
                     ), 
                     React.createElement("div", {className: "form-group "}, 
-                        React.createElement("textarea", {className: "form-control", className: "form-control", name: "content", placeholder: "内容....", rows: "10"})
+                        React.createElement("textarea", {id: "editor", className: "form-control", className: "form-control", name: "content", placeholder: "内容....", rows: "10"})
                     ), 
                     React.createElement("input", {type: "submit", className: "btn btn-success"})
                 )

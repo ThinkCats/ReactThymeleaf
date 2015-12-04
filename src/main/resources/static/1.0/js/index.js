@@ -8,8 +8,6 @@ var TopicList = React.createClass({displayName: "TopicList",
 
     getInitialState:function(){
         var tt = this.loadPageCountFromServer();
-        console.log('ttt:',tt);
-        console.log('tt body:',tt.responseJSON);
         return {
             list:[],
             pageNum:1,

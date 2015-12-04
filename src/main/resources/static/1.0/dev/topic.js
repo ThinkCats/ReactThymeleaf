@@ -15,6 +15,9 @@ var Topic = React.createClass({
 });
 
 var TopicForm = React.createClass({
+    componentDidMount:function(){
+        $('#editor').wysihtml5({locale:'zh-CN'});
+    },
     render:function(){
         return (
             <div>
@@ -23,7 +26,7 @@ var TopicForm = React.createClass({
                         <input type="text" className="form-control" name="name" placeholder="话题名称" />
                     </div>
                     <div className="form-group ">
-                        <textarea className="form-control"  className="form-control"  name="content"  placeholder="内容...." rows="10"/>
+                        <textarea id="editor" className="form-control"  className="form-control"  name="content"  placeholder="内容...." rows="10"/>
                     </div>
                     <input type="submit" className="btn btn-success" />
                 </form>
